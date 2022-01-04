@@ -1,8 +1,6 @@
 
 /// <reference no-default-lib="true"/>
 
-/// <reference lib="es2019" />
-
 /////////////////////////////
 /// KubeJS APIs
 /////////////////////////////
@@ -118,6 +116,16 @@ interface CommandEventJS extends EventJS {
 	exception(): Exemptions;
 }
 
+interface ParseResults<T> {
+	// UNIMPLEMENTED
+}
+interface CommandSource {
+	// UNIMPLEMENTED
+}
+interface Exemptions {
+	// UNIMPLEMENTED
+}
+
 /**
  * # TagEventJS
  * This event is fired when a tag collection is loaded, to modify it with script. 
@@ -189,7 +197,7 @@ interface TagWrapper {
 	removeAll(): TagWrapper;
 }
 
-interface RecipeEventJS extends EventJS implements VanillaCrafting {
+interface RecipeEventJS extends EventJS {
 	/**
 	 * Removes all recipes (nuke option, usually not recommended)
 	 * @param thingToRemove The thing to remove (everything in this case)
