@@ -154,7 +154,6 @@ const NORMALIZED_TYPE = {
 	nullable: "null",
 	Boolean: "boolean",
 	String: "string",
-	Text: "string",
 	Long: "number",
 	Double: "number",
 	Float: "number",

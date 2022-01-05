@@ -61,109 +61,109 @@ interface TextWrapper {
   /**
     * @param text Object
     */
-  of(text?: Object): string;
+  of(text?: Object): Text;
 
   /**
     * @param separator Text
     * @param texts {"name":"texts","type":{"name":"Array","generics":["Text"]}}
     */
-  join(separator: string, texts: Array<Text>): string;
+  join(separator: Text, texts: Array<Text>): Text;
 
   /**
     * @param text Object
     */
-  string(text: Object): string;
+  string(text: Object): Text;
 
   /**
     * @param key String
     */
-  translate(key: string): string;
+  translate(key: string): Text;
 
   /**
     * @param key String
     * @param objects {"name":"objects","type":{"name":"Array","generics":["Object"]}}
     */
-  translate(key: string, objects: Array<Object>): string;
+  translate(key: string, objects: Array<Object>): Text;
 
   /**
     * @param text Object
     */
-  black(text: Object): string;
+  black(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkBlue(text: Object): string;
+  darkBlue(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkGreen(text: Object): string;
+  darkGreen(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkAqua(text: Object): string;
+  darkAqua(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkRed(text: Object): string;
+  darkRed(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkPurple(text: Object): string;
+  darkPurple(text: Object): Text;
 
   /**
     * @param text Object
     */
-  gold(text: Object): string;
+  gold(text: Object): Text;
 
   /**
     * @param text Object
     */
-  gray(text: Object): string;
+  gray(text: Object): Text;
 
   /**
     * @param text Object
     */
-  darkGray(text: Object): string;
+  darkGray(text: Object): Text;
 
   /**
     * @param text Object
     */
-  blue(text: Object): string;
+  blue(text: Object): Text;
 
   /**
     * @param text Object
     */
-  green(text: Object): string;
+  green(text: Object): Text;
 
   /**
     * @param text Object
     */
-  aqua(text: Object): string;
+  aqua(text: Object): Text;
 
   /**
     * @param text Object
     */
-  red(text: Object): string;
+  red(text: Object): Text;
 
   /**
     * @param text Object
     */
-  lightPurple(text: Object): string;
+  lightPurple(text: Object): Text;
 
   /**
     * @param text Object
     */
-  yellow(text: Object): string;
+  yellow(text: Object): Text;
 
   /**
     * @param text Object
     */
-  white(text: Object): string;
+  white(text: Object): Text;
 }
 
 /**
@@ -436,7 +436,7 @@ interface EntityJS {
   /**
     * {"name":"customName","type":"Text","access":1}
     */
-  readonly customName: string;
+  readonly customName: Text;
   /**
     * {"name":"hasCustomName","type":"Boolean"}
     */
@@ -1323,7 +1323,7 @@ interface ItemStackJS {
   /**
     * {"name":"name","type":"Text"}
     */
-  readonly name: string;
+  readonly name: Text;
   /**
     * {"name":"enchantments","type":{"name":"MapJS","type":2}}
     */
@@ -1380,7 +1380,7 @@ interface ItemStackJS {
   /**
     * @param displayName Text
     */
-  withName(displayName?: string): void;
+  withName(displayName?: Text): void;
 
   /**
     * @param o Object
@@ -1636,12 +1636,12 @@ interface FunctionContainer {
     * @param name Text
     * @param entity LootContextEntityTarget
     */
-  name(name: string, entity?: LootContextEntityTarget): void;
+  name(name: Text, entity?: LootContextEntityTarget): void;
 
   /**
     * @param name Text
     */
-  name(name: string): void;
+  name(name: Text): void;
 
   /**
     * @param source String
@@ -1820,15 +1820,15 @@ interface AdvancementJS {
   /**
     * {"name":"displayText","type":"Text"}
     */
-  readonly displayText: string;
+  readonly displayText: Text;
   /**
     * {"name":"title","type":"Text"}
     */
-  readonly title: string;
+  readonly title: Text;
   /**
     * {"name":"description","type":"Text"}
     */
-  readonly description: string;
+  readonly description: Text;
 
   /**
     */
@@ -2083,7 +2083,7 @@ interface ServerPlayerJS extends PlayerJS {
   /**
     * @param reason Text
     */
-  kick(reason: string): void;
+  kick(reason: Text): void;
 
   /**
     */
@@ -2818,20 +2818,20 @@ interface MessageSender {
   /**
     * {"name":"name","type":"Text"}
     */
-  readonly name: string;
+  readonly name: Text;
   /**
     * {"name":"displayName","type":"Text"}
     */
-  readonly displayName: string;
+  readonly displayName: Text;
   /**
     * {"name":"statusMessage","type":"Text","access":2}
     */
-  readonly statusMessage: string;
+  readonly statusMessage: Text;
 
   /**
     * @param message Text
     */
-  tell(message: string): void;
+  tell(message: Text): void;
 
   /**
     * @param command String
