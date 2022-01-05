@@ -7,166 +7,45 @@
 
 
 /**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
+  * Event type -> Event mapping for KubeJS
   */
-declare function onEvent(id: "custom_id", event: (event: DataEvent) => void): void;
+interface KubeJS {
+  "custom_id": DataEvent;
+  "jei.add.items": AddJEIEventJS;
+  "jei.add.fluids": AddJEIEventJS;
+  "jei.subtypes": AddJEISubtypesEventJS;
+  "jei.hide.custom": HideCustomJEIEventJS;
+  "jei.hide.items": HideJEIEventJS;
+  "jei.hide.fluids": HideJEIEventJS;
+  "jei.information": InformationJEIEventJS;
+  "jei.remove.categories": RemoveJEICategoriesEvent;
+  "jei.remove.recipes": RemoveJEIRecipesEvent;
+  "block.loot_tables": BlockLootEventJS;
+  "chest.loot_tables": ChestLootEventJS;
+  "entity.loot_tables": EntityLootEventJS;
+  "fishing.loot_tables": FishingLootEventJS;
+  "generic.loot_tables": GenericLootEventJS;
+  "gift.loot_tables": GiftLootEventJS;
+  "item.tags": TagEventJS;
+  "block.tags": TagEventJS;
+  "fluid.tags": TagEventJS;
+  "entity_type.tags": TagEventJS;
+  "<custom_type>.tags": TagEventJS;
+  "world.load": SimpleWorldEventJS;
+  "world.unload": SimpleWorldEventJS;
+  "world.tick": SimpleWorldEventJS;
+  "world.explosion.post": WorldEventJS$Post;
+  "world.explosion.pre": WorldEventJS$Pre;
+}
 
 /**
   * KubeJS event listener.
   * Triggers during an event.
   * 
-  * @param id The event ID
+  * @param type {string} The event ID
   * @param event
   */
-declare function onEvent(id: "jei.add.items" | "jei.add.fluids", event: (event: AddJEIEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.subtypes", event: (event: AddJEISubtypesEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.hide.custom", event: (event: HideCustomJEIEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.hide.items" | "jei.hide.fluids", event: (event: HideJEIEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.information", event: (event: InformationJEIEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.remove.categories", event: (event: RemoveJEICategoriesEvent) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "jei.remove.recipes", event: (event: RemoveJEIRecipesEvent) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "block.loot_tables", event: (event: BlockLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "chest.loot_tables", event: (event: ChestLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "entity.loot_tables", event: (event: EntityLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "fishing.loot_tables", event: (event: FishingLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "generic.loot_tables", event: (event: GenericLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "gift.loot_tables", event: (event: GiftLootEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "item.tags" | "block.tags" | "fluid.tags" | "entity_type.tags" | "<custom_type>.tags", event: (event: TagEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "world.load" | "world.unload" | "world.tick", event: (event: SimpleWorldEventJS) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "world.explosion.post", event: (event: WorldEventJS$Post) => void): void;
-
-/**
-  * KubeJS event listener.
-  * Triggers during an event.
-  * 
-  * @param id The event ID
-  * @param event
-  */
-declare function onEvent(id: "world.explosion.pre", event: (event: WorldEventJS$Pre) => void): void;
+declare function onEvent<T extends keyof KubeJS, E extends KubeJS[T]>(type: T, handle: (e: E) => void): void;
 
 
 
@@ -182,109 +61,109 @@ interface TextWrapper {
   /**
     * @param text Object
     */
-  of(text?: Object): Text;
+  of(text?: Object): string;
 
   /**
     * @param separator Text
     * @param texts {"name":"texts","type":{"name":"Array","generics":["Text"]}}
     */
-  join(separator: Text, texts: Array): Text;
+  join(separator: string, texts: Array<Text>): string;
 
   /**
     * @param text Object
     */
-  string(text: Object): Text;
+  string(text: Object): string;
 
   /**
     * @param key String
     */
-  translate(key: string): Text;
+  translate(key: string): string;
 
   /**
     * @param key String
     * @param objects {"name":"objects","type":{"name":"Array","generics":["Object"]}}
     */
-  translate(key: string, objects: Array): Text;
+  translate(key: string, objects: Array<Object>): string;
 
   /**
     * @param text Object
     */
-  black(text: Object): Text;
+  black(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkBlue(text: Object): Text;
+  darkBlue(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkGreen(text: Object): Text;
+  darkGreen(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkAqua(text: Object): Text;
+  darkAqua(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkRed(text: Object): Text;
+  darkRed(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkPurple(text: Object): Text;
+  darkPurple(text: Object): string;
 
   /**
     * @param text Object
     */
-  gold(text: Object): Text;
+  gold(text: Object): string;
 
   /**
     * @param text Object
     */
-  gray(text: Object): Text;
+  gray(text: Object): string;
 
   /**
     * @param text Object
     */
-  darkGray(text: Object): Text;
+  darkGray(text: Object): string;
 
   /**
     * @param text Object
     */
-  blue(text: Object): Text;
+  blue(text: Object): string;
 
   /**
     * @param text Object
     */
-  green(text: Object): Text;
+  green(text: Object): string;
 
   /**
     * @param text Object
     */
-  aqua(text: Object): Text;
+  aqua(text: Object): string;
 
   /**
     * @param text Object
     */
-  red(text: Object): Text;
+  red(text: Object): string;
 
   /**
     * @param text Object
     */
-  lightPurple(text: Object): Text;
+  lightPurple(text: Object): string;
 
   /**
     * @param text Object
     */
-  yellow(text: Object): Text;
+  yellow(text: Object): string;
 
   /**
     * @param text Object
     */
-  white(text: Object): Text;
+  white(text: Object): string;
 }
 
 /**
@@ -307,12 +186,44 @@ interface UUIDWrapper {
   * dev.latvian.kubejs.entity.DamageSourceJS
   */
 interface DamageSourceJS {
+  /**
+    * {"name":"source","type":{"name":"DamageSource","type":2}}
+    */
+  readonly source: DamageSource;
+  /**
+    * {"name":"world","type":"WorldJS"}
+    */
+  readonly world: WorldJS;
+  /**
+    * {"name":"type","type":"String"}
+    */
+  readonly type: string;
+  /**
+    * {"name":"immediate","type":"EntityJS","nullable":true}
+    */
+  readonly immediate?: EntityJS;
+  /**
+    * {"name":"actual","type":"EntityJS","nullable":true}
+    */
+  readonly actual?: EntityJS;
+  /**
+    * {"name":"player","type":"PlayerJS","nullable":true}
+    */
+  readonly player?: PlayerJS;
 }
 
 /**
   * dev.latvian.kubejs.entity.EntityArrayList
   */
-interface EntityArrayList extends [object Object] {
+interface EntityArrayList extends Array {
+  /**
+    * {"name":"world","type":"WorldJS"}
+    */
+  readonly world: WorldJS;
+  /**
+    * {"name":"first","type":"EntityJS"}
+    */
+  readonly first: EntityJS;
 
   /**
     */
@@ -333,7 +244,7 @@ interface EntityArrayList extends [object Object] {
   /**
     * @param filter {"name":"filter","type":{"name":"Predicate","generics":["EntityJS"]}}
     */
-  filter(filter: Predicate): EntityArrayList;
+  filter(filter: Predicate<EntityJS>): EntityArrayList;
 
   /**
     * @param channel String
@@ -346,6 +257,230 @@ interface EntityArrayList extends [object Object] {
   * dev.latvian.kubejs.entity.EntityJS
   */
 interface EntityJS {
+  /**
+    * {"name":"minecraftEntity","type":{"name":"Entity","type":2}}
+    */
+  readonly minecraftEntity: Entity;
+  /**
+    * {"name":"world","type":"WorldJS"}
+    */
+  readonly world: WorldJS;
+  /**
+    * {"name":"server","type":"ServerJS","nullable":true}
+    */
+  readonly server?: ServerJS;
+  /**
+    * {"name":"id","type":"UUID"}
+    */
+  readonly id: UUID;
+  /**
+    * {"name":"type","type":"String"}
+    */
+  readonly type: string;
+  /**
+    * {"name":"profile","type":{"name":"GameProfile","type":2}}
+    */
+  readonly profile: GameProfile;
+  /**
+    * {"name":"item","type":"ItemStackJS","nullable":true}
+    */
+  readonly item?: ItemStackJS;
+  /**
+    * {"name":"frame","type":"Boolean"}
+    */
+  readonly frame: boolean;
+  /**
+    * {"name":"tags","type":{"name":"Set","generics":["String"]}}
+    */
+  readonly tags: Set<String>;
+  /**
+    * {"name":"alive","type":"Boolean"}
+    */
+  readonly alive: boolean;
+  /**
+    * {"name":"living","type":"Boolean"}
+    */
+  readonly living: boolean;
+  /**
+    * {"name":"player","type":"Boolean"}
+    */
+  readonly player: boolean;
+  /**
+    * {"name":"crouching","type":"Boolean"}
+    */
+  readonly crouching: boolean;
+  /**
+    * {"name":"sprinting","type":"Boolean"}
+    */
+  readonly sprinting: boolean;
+  /**
+    * {"name":"swimming","type":"Boolean"}
+    */
+  readonly swimming: boolean;
+  /**
+    * {"name":"glowing","type":"Boolean","access":1}
+    */
+  readonly glowing: boolean;
+  /**
+    * {"name":"invisible","type":"Boolean","access":1}
+    */
+  readonly invisible: boolean;
+  /**
+    * {"name":"invulnerable","type":"Boolean","access":1}
+    */
+  readonly invulnerable: boolean;
+  /**
+    * {"name":"boss","type":"Boolean"}
+    */
+  readonly boss: boolean;
+  /**
+    * {"name":"monster","type":"Boolean"}
+    */
+  readonly monster: boolean;
+  /**
+    * {"name":"animal","type":"Boolean"}
+    */
+  readonly animal: boolean;
+  /**
+    * {"name":"ambientCreature","type":"Boolean"}
+    */
+  readonly ambientCreature: boolean;
+  /**
+    * {"name":"waterCreature","type":"Boolean"}
+    */
+  readonly waterCreature: boolean;
+  /**
+    * {"name":"peacefulCreature","type":"Boolean"}
+    */
+  readonly peacefulCreature: boolean;
+  /**
+    * {"name":"onGround","type":"Boolean"}
+    */
+  readonly onGround: boolean;
+  /**
+    * {"name":"fallDistance","type":"Float","access":1}
+    */
+  readonly fallDistance: number;
+  /**
+    * {"name":"stepHeight","type":"Float","access":1}
+    */
+  readonly stepHeight: number;
+  /**
+    * {"name":"noClip","type":"Boolean","access":1}
+    */
+  readonly noClip: boolean;
+  /**
+    * {"name":"silent","type":"Boolean","access":1}
+    */
+  readonly silent: boolean;
+  /**
+    * {"name":"noGravity","type":"Boolean","access":1}
+    */
+  readonly noGravity: boolean;
+  /**
+    * {"name":"x","type":"Double","access":1}
+    */
+  readonly x: number;
+  /**
+    * {"name":"y","type":"Double","access":1}
+    */
+  readonly y: number;
+  /**
+    * {"name":"z","type":"Double","access":1}
+    */
+  readonly z: number;
+  /**
+    * {"name":"yaw","type":"Float","access":1}
+    */
+  readonly yaw: number;
+  /**
+    * {"name":"pitch","type":"Float","access":1}
+    */
+  readonly pitch: number;
+  /**
+    * {"name":"motionX","type":"Double","access":1}
+    */
+  readonly motionX: number;
+  /**
+    * {"name":"motionY","type":"Double","access":1}
+    */
+  readonly motionY: number;
+  /**
+    * {"name":"motionZ","type":"Double","access":1}
+    */
+  readonly motionZ: number;
+  /**
+    * {"name":"ticksExisted","type":"Integer"}
+    */
+  readonly ticksExisted: number;
+  /**
+    * {"name":"position","type":"BlockContainerJS","access":2}
+    */
+  readonly position: BlockContainerJS;
+  /**
+    * {"name":"passengers","type":"EntityArrayList"}
+    */
+  readonly passengers: EntityArrayList;
+  /**
+    * {"name":"recursivePassengers","type":"EntityArrayList"}
+    */
+  readonly recursivePassengers: EntityArrayList;
+  /**
+    * {"name":"ridingEntity","type":"EntityJS","nullable":true}
+    */
+  readonly ridingEntity?: EntityJS;
+  /**
+    * {"name":"teamId","type":"String"}
+    */
+  readonly teamId: string;
+  /**
+    * {"name":"customName","type":"Text","access":1}
+    */
+  readonly customName: string;
+  /**
+    * {"name":"hasCustomName","type":"Boolean"}
+    */
+  readonly hasCustomName: boolean;
+  /**
+    * {"name":"customNameAlwaysVisible","type":"Boolean","access":1}
+    */
+  readonly customNameAlwaysVisible: boolean;
+  /**
+    * {"name":"horizontalFacing","type":"Direction"}
+    */
+  readonly horizontalFacing: Direction;
+  /**
+    * {"name":"facing","type":"Direction"}
+    */
+  readonly facing: Direction;
+  /**
+    * {"name":"eyeHeight","type":"Float"}
+    */
+  readonly eyeHeight: number;
+  /**
+    * {"name":"block","type":"BlockContainerJS"}
+    */
+  readonly block: BlockContainerJS;
+  /**
+    * {"name":"onFire","type":"Integer","access":2}
+    */
+  readonly onFire: number;
+  /**
+    * {"name":"fullNBT","type":{"name":"CompoundTag","type":2},"access":1}
+    */
+  readonly fullNBT: CompoundTag;
+  /**
+    * {"name":"nbt","type":{"name":"CompoundTag","type":2}}
+    */
+  readonly nbt: CompoundTag;
+  /**
+    * {"name":"inWater","type":"Boolean"}
+    */
+  readonly inWater: boolean;
+  /**
+    * {"name":"underWater","type":"Boolean"}
+    */
+  readonly underWater: boolean;
 
   /**
     * @param x Double
@@ -486,6 +621,26 @@ interface EntityJS {
   * dev.latvian.kubejs.entity.ItemEntityJS
   */
 interface ItemEntityJS extends EntityJS {
+  /**
+    * {"name":"item","type":"ItemStackJS","access":1}
+    */
+  readonly item: ItemStackJS;
+  /**
+    * {"name":"lifespan","type":"Integer","access":1}
+    */
+  readonly lifespan: number;
+  /**
+    * {"name":"owner","type":"UUID","access":1,"nullable":true}
+    */
+  readonly owner?: UUID;
+  /**
+    * {"name":"thrower","type":"UUID","access":1,"nullable":true}
+    */
+  readonly thrower?: UUID;
+  /**
+    * {"name":"pickupDelay","type":"Integer","access":2}
+    */
+  readonly pickupDelay: number;
 
   /**
     */
@@ -508,12 +663,116 @@ interface ItemEntityJS extends EntityJS {
   * dev.latvian.kubejs.entity.ItemFrameEntityJS
   */
 interface ItemFrameEntityJS extends EntityJS {
+  /**
+    * {"name":"item","type":"ItemStackJS","access":1}
+    */
+  readonly item: ItemStackJS;
+  /**
+    * {"name":"frameRotation","type":"Integer","access":1}
+    */
+  readonly frameRotation: number;
 }
 
 /**
   * dev.latvian.kubejs.entity.LivingEntityJS
   */
 interface LivingEntityJS extends EntityJS {
+  /**
+    * {"name":"child","type":"Boolean"}
+    */
+  readonly child: boolean;
+  /**
+    * {"name":"health","type":"Float","access":1}
+    */
+  readonly health: number;
+  /**
+    * {"name":"maxHealth","type":"Float","access":1}
+    */
+  readonly maxHealth: number;
+  /**
+    * {"name":"undead","type":"Boolean"}
+    */
+  readonly undead: boolean;
+  /**
+    * {"name":"onLadder","type":"Boolean"}
+    */
+  readonly onLadder: boolean;
+  /**
+    * {"name":"sleeping","type":"Boolean"}
+    */
+  readonly sleeping: boolean;
+  /**
+    * {"name":"elytraFlying","type":"Boolean"}
+    */
+  readonly elytraFlying: boolean;
+  /**
+    * {"name":"revengeTarget","type":"LivingEntityJS","access":1,"nullable":true}
+    */
+  readonly revengeTarget?: LivingEntityJS;
+  /**
+    * {"name":"revengeTimer","type":"Integer"}
+    */
+  readonly revengeTimer: number;
+  /**
+    * {"name":"lastAttackedEntity","type":"LivingEntityJS","nullable":true}
+    */
+  readonly lastAttackedEntity?: LivingEntityJS;
+  /**
+    * {"name":"lastAttackedEntityTime","type":"Integer"}
+    */
+  readonly lastAttackedEntityTime: number;
+  /**
+    * {"name":"idleTime","type":"Integer"}
+    */
+  readonly idleTime: number;
+  /**
+    * {"name":"potionEffects","type":{"name":"EntityPotionEffectsJS","type":2}}
+    */
+  readonly potionEffects: EntityPotionEffectsJS;
+  /**
+    * {"name":"lastDamageSource","type":"DamageSourceJS","nullable":true}
+    */
+  readonly lastDamageSource?: DamageSourceJS;
+  /**
+    * {"name":"attackingEntity","type":"LivingEntityJS","nullable":true}
+    */
+  readonly attackingEntity?: LivingEntityJS;
+  /**
+    * {"name":"mainHandItem","type":"ItemStackJS","access":1}
+    */
+  readonly mainHandItem: ItemStackJS;
+  /**
+    * {"name":"offHandItem","type":"ItemStackJS","access":1}
+    */
+  readonly offHandItem: ItemStackJS;
+  /**
+    * {"name":"headArmorItem","type":"ItemStackJS","access":1}
+    */
+  readonly headArmorItem: ItemStackJS;
+  /**
+    * {"name":"chestArmorItem","type":"ItemStackJS","access":1}
+    */
+  readonly chestArmorItem: ItemStackJS;
+  /**
+    * {"name":"legsArmorItem","type":"ItemStackJS","access":1}
+    */
+  readonly legsArmorItem: ItemStackJS;
+  /**
+    * {"name":"feetArmorItem","type":"ItemStackJS","access":1}
+    */
+  readonly feetArmorItem: ItemStackJS;
+  /**
+    * {"name":"movementSpeed","type":"Float","access":1}
+    */
+  readonly movementSpeed: number;
+  /**
+    * {"name":"absorptionAmount","type":"Float","access":1}
+    */
+  readonly absorptionAmount: number;
+  /**
+    * {"name":"reachDistance","type":"Double"}
+    */
+  readonly reachDistance: number;
 
   /**
     * @param hp Float
@@ -551,14 +810,14 @@ interface LivingEntityJS extends EntityJS {
     * @param slot {"name":"slot","type":{"name":"EquipmentSlot","type":2}}
     * @param amount Integer
     */
-  damageEquipment(slot: EquipmentSlot, amount: Integer): void;
+  damageEquipment(slot: EquipmentSlot, amount: number): void;
 
   /**
     * @param slot {"name":"slot","type":{"name":"EquipmentSlot","type":2}}
     * @param amount Integer
     * @param onBroken {"name":"onBroken","type":{"name":"Consumer","generics":["ItemStackJS"]}}
     */
-  damageEquipment(slot: EquipmentSlot, amount: Integer, onBroken: Consumer): void;
+  damageEquipment(slot: EquipmentSlot, amount: number, onBroken: (input: ItemStackJS) => void): void;
 
   /**
     * @param slot {"name":"slot","type":{"name":"EquipmentSlot","type":2}}
@@ -569,14 +828,14 @@ interface LivingEntityJS extends EntityJS {
     * @param hand InteractionHand
     * @param amount Integer
     */
-  damageHeldItem(hand: InteractionHand, amount: Integer): void;
+  damageHeldItem(hand: InteractionHand, amount: number): void;
 
   /**
     * @param hand InteractionHand
     * @param amount Integer
     * @param onBroken {"name":"onBroken","type":{"name":"Consumer","generics":["ItemStackJS"]}}
     */
-  damageHeldItem(hand: InteractionHand, amount: Integer, onBroken: Consumer): void;
+  damageHeldItem(hand: InteractionHand, amount: number, onBroken: (input: ItemStackJS) => void): void;
 
   /**
     */
@@ -601,13 +860,53 @@ interface LivingEntityJS extends EntityJS {
   * dev.latvian.kubejs.entity.RayTraceResultJS
   */
 interface RayTraceResultJS {
+  /**
+    * {"name":"fromEntity","type":"EntityJS"}
+    */
+  readonly fromEntity: EntityJS;
+  /**
+    * {"name":"type","type":"String"}
+    */
+  readonly type: string;
+  /**
+    * {"name":"distance","type":"Double"}
+    */
+  readonly distance: number;
+  /**
+    * {"name":"hitX","type":"Double","access":1}
+    */
+  readonly hitX: number;
+  /**
+    * {"name":"hitY","type":"Double","access":1}
+    */
+  readonly hitY: number;
+  /**
+    * {"name":"hitZ","type":"Double","access":1}
+    */
+  readonly hitZ: number;
+  /**
+    * {"name":"block","type":"BlockContainerJS","access":1,"nullable":true}
+    */
+  readonly block?: BlockContainerJS;
+  /**
+    * {"name":"facing","type":"Direction","access":1,"nullable":true}
+    */
+  readonly facing?: Direction;
+  /**
+    * {"name":"entity","type":"EntityJS","access":1,"nullable":true}
+    */
+  readonly entity?: EntityJS;
 }
 
 /**
   * dev.latvian.kubejs.event.DataEvent
-  * Events this will trigger on: custom_id
+  * Events: custom_id
   */
 interface DataEvent extends EventJS {
+  /**
+    * {"name":"data","type":"Object","nullable":true}
+    */
+  readonly data?: Object;
 }
 
 /**
@@ -658,7 +957,7 @@ interface StartupEventJS extends EventJS {
 
 /**
   * dev.latvian.kubejs.integration.jei.AddJEIEventJS
-  * Events this will trigger on: jei.add.items, jei.add.fluids
+  * Events: jei.add.items, jei.add.fluids
   */
 interface AddJEIEventJS extends EventJS {
 
@@ -670,7 +969,7 @@ interface AddJEIEventJS extends EventJS {
 
 /**
   * dev.latvian.kubejs.integration.jei.AddJEISubtypesEventJS
-  * Events this will trigger on: jei.subtypes
+  * Events: jei.subtypes
   */
 interface AddJEISubtypesEventJS extends EventJS {
 
@@ -678,7 +977,7 @@ interface AddJEISubtypesEventJS extends EventJS {
     * @param item ItemStackJS
     * @param interpreter {"name":"interpreter","type":{"name":"Function","generics":["ItemStackJS","Object"]}}
     */
-  registerInterpreter(item: ItemStackJS, interpreter: Function): void;
+  registerInterpreter(item: ItemStackJS, interpreter: (input: ItemStackJS) => void): void;
 
   /**
     * @param item ItemStackJS
@@ -694,7 +993,7 @@ interface AddJEISubtypesEventJS extends EventJS {
 
 /**
   * dev.latvian.kubejs.integration.jei.HideCustomJEIEventJS
-  * Events this will trigger on: jei.hide.custom
+  * Events: jei.hide.custom
   */
 interface HideCustomJEIEventJS extends EventJS {
 
@@ -706,9 +1005,13 @@ interface HideCustomJEIEventJS extends EventJS {
 
 /**
   * dev.latvian.kubejs.integration.jei.HideJEIEventJS
-  * Events this will trigger on: jei.hide.items, jei.hide.fluids
+  * Events: jei.hide.items, jei.hide.fluids
   */
 interface HideJEIEventJS extends EventJS {
+  /**
+    * {"name":"allIngredients","type":{"name":"Collection","generics":[{"name":"T","type":1}]}}
+    */
+  readonly allIngredients: T;
 
   /**
     * @param object Object
@@ -722,7 +1025,7 @@ interface HideJEIEventJS extends EventJS {
 
 /**
   * dev.latvian.kubejs.integration.jei.InformationJEIEventJS
-  * Events this will trigger on: jei.information
+  * Events: jei.information
   */
 interface InformationJEIEventJS extends EventJS {
 
@@ -730,50 +1033,98 @@ interface InformationJEIEventJS extends EventJS {
     * @param object Object
     * @param info {"name":"info","type":{"name":"VarArray","generics":["String"]}}
     */
-  add(object: Object, info: VarArray): void;
+  add(object: Object, info: Array<String>): void;
 
   /**
     * @param type {"name":"type","type":{"name":"IIngredientType","type":2,"generics":[{"name":"T","type":1}]}}
     * @param object Object
     * @param info {"name":"info","type":{"name":"VarArray","generics":["String"]}}
     */
-  addForType(type: IIngredientType, object: Object, info: VarArray): void;
+  addForType(type: T, object: Object, info: Array<String>): void;
 }
 
 /**
   * dev.latvian.kubejs.integration.jei.RemoveJEICategoriesEvent
-  * Events this will trigger on: jei.remove.categories
+  * Events: jei.remove.categories
   */
 interface RemoveJEICategoriesEvent extends EventJS {
+  /**
+    * {"name":"categories","type":{"name":"Collection","generics":[{"name":"IRecipeCategory","type":2,"generics":["Object"]}]}}
+    */
+  readonly categories: IRecipeCategory;
+  /**
+    * {"name":"categoryIds","type":{"name":"Collection","generics":["ResourceLocation"]}}
+    */
+  readonly categoryIds: Collection<ResourceLocation>;
 
   /**
     * @param categoriesToYeet {"name":"categoriesToYeet","type":{"name":"VarArray","generics":["String"]}}
     */
-  remove(categoriesToYeet: VarArray): void;
+  remove(categoriesToYeet: Array<String>): void;
 
   /**
     * @param filter {"name":"filter","type":{"name":"Predicate","generics":[{"name":"IRecipeCategory","type":2,"generics":["Object"]}]}}
     */
-  removeIf(filter: Predicate): void;
+  removeIf(filter: IRecipeCategory): void;
 }
 
 /**
   * dev.latvian.kubejs.integration.jei.RemoveJEIRecipesEvent
-  * Events this will trigger on: jei.remove.recipes
+  * Events: jei.remove.recipes
   */
 interface RemoveJEIRecipesEvent extends EventJS {
+  /**
+    * {"name":"categories","type":{"name":"Collection","generics":[{"name":"IRecipeCategory","type":2,"generics":["Object"]}]}}
+    */
+  readonly categories: IRecipeCategory;
+  /**
+    * {"name":"categoryIds","type":{"name":"Collection","generics":["ResourceLocation"]}}
+    */
+  readonly categoryIds: Collection<ResourceLocation>;
 
   /**
     * @param category ResourceLocation
     * @param recipesToRemove {"name":"recipesToRemove","type":{"name":"VarArray","generics":["ResourceLocation"]}}
     */
-  remove(category: string, recipesToRemove: VarArray): void;
+  remove(category: string, recipesToRemove: Array<ResourceLocation>): void;
 }
 
 /**
   * dev.latvian.kubejs.item.ingredient.IngredientJS
   */
 interface IngredientJS {
+  /**
+    * {"name":"vanillaPredicate","type":{"name":"Predicate","generics":[{"name":"ItemStack","type":2}]}}
+    */
+  readonly vanillaPredicate: ItemStack;
+  /**
+    * {"name":"empty","type":"Boolean"}
+    */
+  readonly empty: boolean;
+  /**
+    * {"name":"invalidRecipeIngredient","type":"Boolean"}
+    */
+  readonly invalidRecipeIngredient: boolean;
+  /**
+    * {"name":"stacks","type":{"name":"Set","generics":["ItemStackJS"]}}
+    */
+  readonly stacks: Set<ItemStackJS>;
+  /**
+    * {"name":"vanillaItems","type":{"name":"Set","generics":[{"name":"Item","type":2}]}}
+    */
+  readonly vanillaItems: Item;
+  /**
+    * {"name":"itemIds","type":{"name":"Set","generics":["String"]}}
+    */
+  readonly itemIds: Set<String>;
+  /**
+    * {"name":"first","type":"ItemStackJS"}
+    */
+  readonly first: ItemStackJS;
+  /**
+    * {"name":"count","type":"Integer"}
+    */
+  readonly count: number;
 
   /**
     * @param stack ItemStackJS
@@ -802,7 +1153,7 @@ interface IngredientJS {
   /**
     * @param count Integer
     */
-  withCount(count: Integer): void;
+  withCount(count: number): void;
 
   /**
     */
@@ -823,7 +1174,7 @@ interface IngredientJS {
 
   /**
     */
-  unwrapStackIngredient(): List;
+  unwrapStackIngredient(): IngredientJS[];
 
   /**
     */
@@ -834,42 +1185,54 @@ interface IngredientJS {
   * dev.latvian.kubejs.item.InventoryJS
   */
 interface InventoryJS {
+  /**
+    * {"name":"minecraftInventory","type":{"name":"ItemHandler","type":2}}
+    */
+  readonly minecraftInventory: ItemHandler;
+  /**
+    * {"name":"size","type":"Integer"}
+    */
+  readonly size: number;
+  /**
+    * {"name":"empty","type":"Boolean"}
+    */
+  readonly empty: boolean;
 
   /**
     * @param slot Integer
     */
-  get(slot: Integer): ItemStackJS;
+  get(slot: number): ItemStackJS;
 
   /**
     * @param slot Integer
     * @param item ItemStackJS
     */
-  set(slot: Integer, item: ItemStackJS): void;
+  set(slot: number, item: ItemStackJS): void;
 
   /**
     * @param slot Integer
     * @param item ItemStackJS
     * @param simulate Boolean
     */
-  insert(slot: Integer, item: ItemStackJS, simulate: boolean): ItemStackJS;
+  insert(slot: number, item: ItemStackJS, simulate: boolean): ItemStackJS;
 
   /**
     * @param slot Integer
     * @param amount Integer
     * @param simulate Boolean
     */
-  extract(slot: Integer, amount: Integer, simulate: boolean): ItemStackJS;
+  extract(slot: number, amount: number, simulate: boolean): ItemStackJS;
 
   /**
     * @param slot Integer
     */
-  getSlotLimit(slot: Integer): Integer;
+  getSlotLimit(slot: number): number;
 
   /**
     * @param slot Integer
     * @param item Object
     */
-  isItemValid(slot: Integer, item: Object): boolean;
+  isItemValid(slot: number, item: Object): boolean;
 
   /**
     */
@@ -882,30 +1245,30 @@ interface InventoryJS {
 
   /**
     */
-  find(): Integer;
+  find(): number;
 
   /**
     * @param item ItemStackJS
     */
-  find(item: ItemStackJS): Integer;
+  find(item: ItemStackJS): number;
 
   /**
     */
-  count(): Integer;
-
-  /**
-    * @param item ItemStackJS
-    */
-  count(item: ItemStackJS): Integer;
-
-  /**
-    */
-  countNonEmpty(): Integer;
+  count(): number;
 
   /**
     * @param item ItemStackJS
     */
-  countNonEmpty(item: ItemStackJS): Integer;
+  count(item: ItemStackJS): number;
+
+  /**
+    */
+  countNonEmpty(): number;
+
+  /**
+    * @param item ItemStackJS
+    */
+  countNonEmpty(item: ItemStackJS): number;
 
   /**
     */
@@ -921,6 +1284,62 @@ interface InventoryJS {
   * dev.latvian.kubejs.item.ItemStackJS
   */
 interface ItemStackJS {
+  /**
+    * {"name":"item","type":{"name":"Item","type":2}}
+    */
+  readonly item: Item;
+  /**
+    * {"name":"itemStack","type":{"name":"ItemStack","type":2}}
+    */
+  readonly itemStack: ItemStack;
+  /**
+    * {"name":"id","type":"String"}
+    */
+  readonly id: string;
+  /**
+    * {"name":"tags","type":{"name":"Collection","generics":["ResourceLocation"]}}
+    */
+  readonly tags: Collection<ResourceLocation>;
+  /**
+    * {"name":"count","type":"Integer","access":2}
+    */
+  readonly count: number;
+  /**
+    * {"name":"block","type":"Boolean"}
+    */
+  readonly block: boolean;
+  /**
+    * {"name":"nbt","type":{"name":"CompoundTag","type":2},"nullable":true}
+    */
+  readonly nbt?: CompoundTag;
+  /**
+    * {"name":"nbtString","type":"String"}
+    */
+  readonly nbtString: string;
+  /**
+    * {"name":"chance","type":"Double","access":1}
+    */
+  readonly chance: number;
+  /**
+    * {"name":"name","type":"Text"}
+    */
+  readonly name: string;
+  /**
+    * {"name":"enchantments","type":{"name":"MapJS","type":2}}
+    */
+  readonly enchantments: MapJS;
+  /**
+    * {"name":"mod","type":"String"}
+    */
+  readonly mod: string;
+  /**
+    * {"name":"harvestSpeed","type":"Float"}
+    */
+  readonly harvestSpeed: number;
+  /**
+    * {"name":"itemGroup","type":"String"}
+    */
+  readonly itemGroup: string;
 
   /**
     * @param tag ResourceLocation
@@ -930,7 +1349,7 @@ interface ItemStackJS {
   /**
     * @param c Integer
     */
-  withCount(c: Integer): void;
+  withCount(c: number): void;
 
   /**
     */
@@ -961,7 +1380,7 @@ interface ItemStackJS {
   /**
     * @param displayName Text
     */
-  withName(displayName?: Text): void;
+  withName(displayName?: string): void;
 
   /**
     * @param o Object
@@ -972,7 +1391,7 @@ interface ItemStackJS {
     * @param enchantment {"name":"enchantment","type":{"name":"Enchantment","type":2}}
     * @param level Integer
     */
-  hasEnchantment(enchantment: Enchantment, level: Integer): boolean;
+  hasEnchantment(enchantment: Enchantment, level: number): boolean;
 
   /**
     * @param enchantments {"name":"enchantments","type":{"name":"MapJS","type":2}}
@@ -983,7 +1402,7 @@ interface ItemStackJS {
     * @param enchantment {"name":"enchantment","type":{"name":"Enchantment","type":2}}
     * @param level Integer
     */
-  enchant(enchantment: Enchantment, level: Integer): void;
+  enchant(enchantment: Enchantment, level: number): void;
 
   /**
     */
@@ -1018,12 +1437,12 @@ interface ItemStackJS {
     * @param player PlayerJS
     * @param block BlockContainerJS
     */
-  getHarvestLevel(tool: ToolType, player?: PlayerJS, block?: BlockContainerJS): Integer;
+  getHarvestLevel(tool: ToolType, player?: PlayerJS, block?: BlockContainerJS): number;
 
   /**
     * @param tool {"name":"tool","type":{"name":"ToolType","type":2}}
     */
-  getHarvestLevel(tool: ToolType): Integer;
+  getHarvestLevel(tool: ToolType): number;
 
   /**
     * @param block BlockContainerJS
@@ -1041,7 +1460,7 @@ interface ItemStackJS {
 
 /**
   * dev.latvian.kubejs.loot.BlockLootEventJS
-  * Events this will trigger on: block.loot_tables
+  * Events: block.loot_tables
   */
 interface BlockLootEventJS extends LootEventJS {
 
@@ -1049,7 +1468,7 @@ interface BlockLootEventJS extends LootEventJS {
     * @param blocks {"name":"blocks","type":{"name":"BlockStatePredicate","type":2}}
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addBlock(blocks: BlockStatePredicate, b: Consumer): void;
+  addBlock(blocks: BlockStatePredicate, b: (input: LootBuilder) => void): void;
 
   /**
     * @param blocks {"name":"blocks","type":{"name":"BlockStatePredicate","type":2}}
@@ -1066,12 +1485,12 @@ interface BlockLootEventJS extends LootEventJS {
     * @param blocks {"name":"blocks","type":{"name":"BlockStatePredicate","type":2}}
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  modifyBlock(blocks: BlockStatePredicate, b: Consumer): void;
+  modifyBlock(blocks: BlockStatePredicate, b: (input: LootBuilder) => void): void;
 }
 
 /**
   * dev.latvian.kubejs.loot.ChestLootEventJS
-  * Events this will trigger on: chest.loot_tables
+  * Events: chest.loot_tables
   */
 interface ChestLootEventJS extends LootEventJS {
 
@@ -1079,7 +1498,7 @@ interface ChestLootEventJS extends LootEventJS {
     * @param id ResourceLocation
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addChest(id: string, b: Consumer): void;
+  addChest(id: string, b: (input: LootBuilder) => void): void;
 }
 
 /**
@@ -1132,7 +1551,7 @@ interface ConditionContainer {
 
 /**
   * dev.latvian.kubejs.loot.EntityLootEventJS
-  * Events this will trigger on: entity.loot_tables
+  * Events: entity.loot_tables
   */
 interface EntityLootEventJS extends LootEventJS {
 
@@ -1140,18 +1559,18 @@ interface EntityLootEventJS extends LootEventJS {
     * @param type {"name":"type","type":{"name":"EntityType","type":2}}
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addEntity(type: EntityType, b: Consumer): void;
+  addEntity(type: EntityType, b: (input: LootBuilder) => void): void;
 
   /**
     * @param type {"name":"type","type":{"name":"EntityType","type":2}}
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  modifyEntity(type: EntityType, b: Consumer): void;
+  modifyEntity(type: EntityType, b: (input: LootBuilder) => void): void;
 }
 
 /**
   * dev.latvian.kubejs.loot.FishingLootEventJS
-  * Events this will trigger on: fishing.loot_tables
+  * Events: fishing.loot_tables
   */
 interface FishingLootEventJS extends LootEventJS {
 
@@ -1159,7 +1578,7 @@ interface FishingLootEventJS extends LootEventJS {
     * @param id ResourceLocation
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addFishing(id: string, b: Consumer): void;
+  addFishing(id: string, b: (input: LootBuilder) => void): void;
 }
 
 /**
@@ -1175,7 +1594,7 @@ interface FunctionContainer {
   /**
     * @param func {"name":"func","type":{"name":"Consumer","generics":["ConditionalFunction"]}}
     */
-  addConditionalFunction(func: Consumer): void;
+  addConditionalFunction(func: (input: ConditionalFunction) => void): void;
 
   /**
     * @param count {"name":"count","type":{"name":"RandomIntGenerator","type":2}}
@@ -1191,7 +1610,7 @@ interface FunctionContainer {
   /**
     * @param enchantments {"name":"enchantments","type":{"name":"Array","generics":["ResourceLocation"]}}
     */
-  enchantRandomly(enchantments: Array): void;
+  enchantRandomly(enchantments: Array<ResourceLocation>): void;
 
   /**
     * @param tag {"name":"tag","type":{"name":"CompoundTag","type":2}}
@@ -1206,7 +1625,7 @@ interface FunctionContainer {
     * @param count {"name":"count","type":{"name":"RandomIntGenerator","type":2}}
     * @param limit Integer
     */
-  lootingEnchant(count: RandomIntGenerator, limit: Integer): void;
+  lootingEnchant(count: RandomIntGenerator, limit: number): void;
 
   /**
     * @param damage {"name":"damage","type":{"name":"RandomIntGenerator","type":2}}
@@ -1217,12 +1636,12 @@ interface FunctionContainer {
     * @param name Text
     * @param entity LootContextEntityTarget
     */
-  name(name: Text, entity?: LootContextEntityTarget): void;
+  name(name: string, entity?: LootContextEntityTarget): void;
 
   /**
     * @param name Text
     */
-  name(name: Text): void;
+  name(name: string): void;
 
   /**
     * @param source String
@@ -1238,7 +1657,7 @@ interface FunctionContainer {
 
 /**
   * dev.latvian.kubejs.loot.GenericLootEventJS
-  * Events this will trigger on: generic.loot_tables
+  * Events: generic.loot_tables
   */
 interface GenericLootEventJS extends LootEventJS {
 
@@ -1246,12 +1665,12 @@ interface GenericLootEventJS extends LootEventJS {
     * @param id ResourceLocation
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addGeneric(id: string, b: Consumer): void;
+  addGeneric(id: string, b: (input: LootBuilder) => void): void;
 }
 
 /**
   * dev.latvian.kubejs.loot.GiftLootEventJS
-  * Events this will trigger on: gift.loot_tables
+  * Events: gift.loot_tables
   */
 interface GiftLootEventJS extends LootEventJS {
 
@@ -1259,7 +1678,7 @@ interface GiftLootEventJS extends LootEventJS {
     * @param id ResourceLocation
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  addGift(id: string, b: Consumer): void;
+  addGift(id: string, b: (input: LootBuilder) => void): void;
 }
 
 /**
@@ -1274,7 +1693,7 @@ interface LootBuilder {
   /**
     * @param pool {"name":"pool","type":{"name":"Consumer","generics":["LootBuilderPool"]}}
     */
-  addPool(pool: Consumer): void;
+  addPool(pool: (input: LootBuilderPool) => void): void;
 
   /**
     */
@@ -1293,6 +1712,14 @@ interface LootBuilder {
   * dev.latvian.kubejs.loot.LootBuilderPool
   */
 interface LootBuilderPool {
+  /**
+    * {"name":"rolls","type":{"name":"RandomIntGenerator","type":2},"access":1}
+    */
+  readonly rolls: RandomIntGenerator;
+  /**
+    * {"name":"bonusRolls","type":{"name":"RandomIntGenerator","type":2},"access":1,"nullable":true}
+    */
+  readonly bonusRolls?: RandomIntGenerator;
 
   /**
     */
@@ -1306,7 +1733,7 @@ interface LootBuilderPool {
   /**
     * @param weight Integer
     */
-  addEmpty(weight: Integer): void;
+  addEmpty(weight: number): void;
 
   /**
     * @param table ResourceLocation
@@ -1318,13 +1745,13 @@ interface LootBuilderPool {
     * @param weight Integer
     * @param count {"name":"count","type":{"name":"RandomIntGenerator","type":2},"nullable":true}
     */
-  addItem(item: ItemStackJS, weight: Integer, count?: RandomIntGenerator): void;
+  addItem(item: ItemStackJS, weight: number, count?: RandomIntGenerator): void;
 
   /**
     * @param item ItemStackJS
     * @param weight Integer
     */
-  addItem(item: ItemStackJS, weight: Integer): void;
+  addItem(item: ItemStackJS, weight: number): void;
 
   /**
     * @param item ItemStackJS
@@ -1348,6 +1775,14 @@ interface LootContextEntityTarget {
   * dev.latvian.kubejs.loot.LootEventJS
   */
 interface LootEventJS extends EventJS {
+  /**
+    * {"name":"type","type":"String"}
+    */
+  readonly type: string;
+  /**
+    * {"name":"directory","type":"String"}
+    */
+  readonly directory: string;
 
   /**
     * @param id ResourceLocation
@@ -1359,7 +1794,7 @@ interface LootEventJS extends EventJS {
     * @param id ResourceLocation
     * @param b {"name":"b","type":{"name":"Consumer","generics":["LootBuilder"]}}
     */
-  modify(id: string, b: Consumer): void;
+  modify(id: string, b: (input: LootBuilder) => void): void;
 
   /**
     */
@@ -1370,6 +1805,30 @@ interface LootEventJS extends EventJS {
   * dev.latvian.kubejs.player.AdvancementJS
   */
 interface AdvancementJS {
+  /**
+    * {"name":"advancement","type":{"name":"Advancement","type":2}}
+    */
+  readonly advancement: Advancement;
+  /**
+    * {"name":"parent","type":"AdvancementJS","nullable":true}
+    */
+  readonly parent?: AdvancementJS;
+  /**
+    * {"name":"children","type":{"name":"Set","generics":["AdvancementJS"]}}
+    */
+  readonly children: Set<AdvancementJS>;
+  /**
+    * {"name":"displayText","type":"Text"}
+    */
+  readonly displayText: string;
+  /**
+    * {"name":"title","type":"Text"}
+    */
+  readonly title: string;
+  /**
+    * {"name":"description","type":"Text"}
+    */
+  readonly description: string;
 
   /**
     */
@@ -1389,12 +1848,84 @@ interface AdvancementJS {
   * dev.latvian.kubejs.player.ClientPlayerJS
   */
 interface ClientPlayerJS extends PlayerJS {
+  /**
+    * {"name":"self","type":"Boolean"}
+    */
+  readonly self: boolean;
 }
 
 /**
   * dev.latvian.kubejs.player.PlayerJS
   */
 interface PlayerJS extends LivingEntityJS {
+  /**
+    * {"name":"minecraftPlayer","type":{"name":"Player","type":2}}
+    */
+  readonly minecraftPlayer: Player;
+  /**
+    * {"name":"data","type":{"name":"AttachedData","type":2}}
+    */
+  readonly data: AttachedData;
+  /**
+    * {"name":"fake","type":"Boolean"}
+    */
+  readonly fake: boolean;
+  /**
+    * {"name":"inventory","type":"InventoryJS"}
+    */
+  readonly inventory: InventoryJS;
+  /**
+    * {"name":"selectedSlot","type":"Integer","access":1}
+    */
+  readonly selectedSlot: number;
+  /**
+    * {"name":"mouseItem","type":"ItemStackJS","access":1}
+    */
+  readonly mouseItem: ItemStackJS;
+  /**
+    * {"name":"creativeMode","type":"Boolean"}
+    */
+  readonly creativeMode: boolean;
+  /**
+    * {"name":"spectator","type":"Boolean"}
+    */
+  readonly spectator: boolean;
+  /**
+    * {"name":"stats","type":"PlayerStatsJS"}
+    */
+  readonly stats: PlayerStatsJS;
+  /**
+    * {"name":"foodLevel","type":"Integer","access":1}
+    */
+  readonly foodLevel: number;
+  /**
+    * {"name":"xp","type":"Integer","access":1}
+    */
+  readonly xp: number;
+  /**
+    * {"name":"xpLevel","type":"Integer","access":1}
+    */
+  readonly xpLevel: number;
+  /**
+    * {"name":"openInventory","type":{"name":"AbstractContainerMenu","type":2}}
+    */
+  readonly openInventory: AbstractContainerMenu;
+  /**
+    * {"name":"miningBlock","type":"Boolean"}
+    */
+  readonly miningBlock: boolean;
+  /**
+    * {"name":"airSupply","type":"Integer","access":1}
+    */
+  readonly airSupply: number;
+  /**
+    * {"name":"maxAirSupply","type":"Integer"}
+    */
+  readonly maxAirSupply: number;
+  /**
+    * {"name":"stages","type":"Stages"}
+    */
+  readonly stages: Stages;
 
   /**
     */
@@ -1420,7 +1951,7 @@ interface PlayerJS extends LivingEntityJS {
     * @param f Integer
     * @param m Float
     */
-  addFood(f: Integer, m: number): void;
+  addFood(f: number, m: number): void;
 
   /**
     * @param exhaustion Float
@@ -1430,12 +1961,12 @@ interface PlayerJS extends LivingEntityJS {
   /**
     * @param xp Integer
     */
-  addXP(xp: Integer): void;
+  addXP(xp: number): void;
 
   /**
     * @param l Integer
     */
-  addXPLevels(l: Integer): void;
+  addXPLevels(l: number): void;
 
   /**
     * @param renderer {"name":"renderer","type":{"name":"CompoundTag","type":2}}
@@ -1454,81 +1985,105 @@ interface PlayerJS extends LivingEntityJS {
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     * @param ticks Integer
     */
-  addItemCooldown(item: Item, ticks: Integer): void;
+  addItemCooldown(item: Item, ticks: number): void;
 }
 
 /**
   * dev.latvian.kubejs.player.PlayerStatsJS
   */
 interface PlayerStatsJS {
+  /**
+    * {"name":"player","type":"PlayerJS"}
+    */
+  readonly player: PlayerJS;
 
   /**
     * @param id ResourceLocation
     */
-  get(id: string): Integer;
+  get(id: string): number;
 
   /**
     * @param id ResourceLocation
     * @param value Integer
     */
-  set(id: string, value: Integer): void;
+  set(id: string, value: number): void;
 
   /**
     * @param id ResourceLocation
     * @param value Integer
     */
-  add(id: string, value: Integer): void;
+  add(id: string, value: number): void;
 
   /**
     * @param block {"name":"block","type":{"name":"Block","type":2}}
     */
-  getBlocksMined(block: Block): Integer;
+  getBlocksMined(block: Block): number;
 
   /**
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     */
-  getItemsCrafted(item: Item): Integer;
+  getItemsCrafted(item: Item): number;
 
   /**
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     */
-  getItemsUsed(item: Item): Integer;
+  getItemsUsed(item: Item): number;
 
   /**
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     */
-  getItemsBroken(item: Item): Integer;
+  getItemsBroken(item: Item): number;
 
   /**
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     */
-  getItemsPickedUp(item: Item): Integer;
+  getItemsPickedUp(item: Item): number;
 
   /**
     * @param item {"name":"item","type":{"name":"Item","type":2}}
     */
-  getItemsDropped(item: Item): Integer;
+  getItemsDropped(item: Item): number;
 
   /**
     * @param entity {"name":"entity","type":{"name":"EntityType","type":2}}
     */
-  getKilled(entity: EntityType): Integer;
+  getKilled(entity: EntityType): number;
 
   /**
     * @param entity {"name":"entity","type":{"name":"EntityType","type":2}}
     */
-  getKilledBy(entity: EntityType): Integer;
+  getKilledBy(entity: EntityType): number;
 }
 
 /**
   * dev.latvian.kubejs.player.ServerPlayerJS
   */
 interface ServerPlayerJS extends PlayerJS {
+  /**
+    * {"name":"creativeMode","type":"Boolean","access":2}
+    */
+  readonly creativeMode: boolean;
+  /**
+    * {"name":"gameMode","type":"String","access":2}
+    */
+  readonly gameMode: string;
+  /**
+    * {"name":"op","type":"Boolean"}
+    */
+  readonly op: boolean;
+  /**
+    * {"name":"hasClientMod","type":"Boolean"}
+    */
+  readonly hasClientMod: boolean;
+  /**
+    * {"name":"spawnLocation","type":"BlockContainerJS","access":1,"nullable":true}
+    */
+  readonly spawnLocation?: BlockContainerJS;
 
   /**
     * @param reason Text
     */
-  kick(reason: Text): void;
+  kick(reason: string): void;
 
   /**
     */
@@ -1561,6 +2116,30 @@ interface ServerPlayerJS extends PlayerJS {
   * dev.latvian.kubejs.script.ScriptType
   */
 interface ScriptType {
+  /**
+    * {"name":"STARTUP","type":"ScriptType","static":true}
+    */
+  readonly STARTUP: ScriptType;
+  /**
+    * {"name":"SERVER","type":"ScriptType","static":true}
+    */
+  readonly SERVER: ScriptType;
+  /**
+    * {"name":"CLIENT","type":"ScriptType","static":true}
+    */
+  readonly CLIENT: ScriptType;
+  /**
+    * {"name":"console","type":"ConsoleJS"}
+    */
+  readonly console: ConsoleJS;
+  /**
+    * {"name":"client","type":"Boolean"}
+    */
+  readonly client: boolean;
+  /**
+    * {"name":"server","type":"Boolean"}
+    */
+  readonly server: boolean;
 }
 
 /**
@@ -1581,7 +2160,7 @@ interface GameRulesJS {
   /**
     * @param rule String
     */
-  getInt(rule: string): Integer;
+  getInt(rule: string): number;
 
   /**
     * @param rule String
@@ -1605,6 +2184,30 @@ interface IScheduledEventCallback {
   * dev.latvian.kubejs.server.ScheduledEvent
   */
 interface ScheduledEvent {
+  /**
+    * {"name":"usingTicks","type":"Boolean"}
+    */
+  readonly usingTicks: boolean;
+  /**
+    * {"name":"server","type":"ServerJS"}
+    */
+  readonly server: ServerJS;
+  /**
+    * {"name":"timer","type":"Long"}
+    */
+  readonly timer: number;
+  /**
+    * {"name":"endTime","type":"Long"}
+    */
+  readonly endTime: number;
+  /**
+    * {"name":"timerDuration","type":"Long"}
+    */
+  readonly timerDuration: number;
+  /**
+    * {"name":"data","type":"Object","nullable":true}
+    */
+  readonly data?: Object;
 
   /**
     */
@@ -1620,6 +2223,59 @@ interface ScheduledEvent {
   * dev.latvian.kubejs.server.ServerJS
   */
 interface ServerJS {
+  /**
+    * {"name":"overworld","type":{"name":"ServerWorldJS","type":2}}
+    */
+  readonly overworld: ServerWorldJS;
+  /**
+    * {"name":"ServerPlayerJS","type":{"name":"nullable","type":2},"access":1,"deprecated":true}
+    * @depricated
+    */
+  readonly ServerPlayerJS: null;
+  /**
+    * {"name":"data","type":{"name":"AttachedData","type":2}}
+    */
+  readonly data: AttachedData;
+  /**
+    * {"name":"worlds","type":{"name":"List","generics":[{"name":"ServerWorldJS","type":2}]}}
+    */
+  readonly worlds: ServerWorldJS;
+  /**
+    * {"name":"overworld","type":{"name":"ServerWorldJS","type":2}}
+    */
+  readonly overworld: ServerWorldJS;
+  /**
+    * {"name":"minecraftServer","type":{"name":"MinecraftServer","type":2}}
+    */
+  readonly minecraftServer: MinecraftServer;
+  /**
+    * {"name":"running","type":"Boolean"}
+    */
+  readonly running: boolean;
+  /**
+    * {"name":"hardcore","type":"Boolean"}
+    */
+  readonly hardcore: boolean;
+  /**
+    * {"name":"singlePlayer","type":"Boolean"}
+    */
+  readonly singlePlayer: boolean;
+  /**
+    * {"name":"dedicated","type":"Boolean"}
+    */
+  readonly dedicated: boolean;
+  /**
+    * {"name":"motd","type":"String","access":1}
+    */
+  readonly motd: string;
+  /**
+    * {"name":"players","type":"EntityArrayList"}
+    */
+  readonly players: EntityArrayList;
+  /**
+    * {"name":"entities","type":"EntityArrayList"}
+    */
+  readonly entities: EntityArrayList;
 
   /**
     */
@@ -1693,13 +2349,49 @@ interface ServerJS {
   * dev.latvian.kubejs.server.ServerSettings
   */
 interface ServerSettings {
+  /**
+    * {"name":"dataPackOutput","type":"Boolean","access":1}
+    */
+  readonly dataPackOutput: boolean;
+  /**
+    * {"name":"logAddedRecipes","type":"Boolean","access":1}
+    */
+  readonly logAddedRecipes: boolean;
+  /**
+    * {"name":"logRemovedRecipes","type":"Boolean","access":1}
+    */
+  readonly logRemovedRecipes: boolean;
+  /**
+    * {"name":"logOverrides","type":"Boolean","access":1}
+    */
+  readonly logOverrides: boolean;
+  /**
+    * {"name":"logSkippedRecipes","type":"Boolean","access":1}
+    */
+  readonly logSkippedRecipes: boolean;
+  /**
+    * {"name":"logErroringRecipes","type":"Boolean","access":1}
+    */
+  readonly logErroringRecipes: boolean;
+  /**
+    * {"name":"logInvalidRecipeHandlers","type":"Boolean","access":1}
+    */
+  readonly logInvalidRecipeHandlers: boolean;
+  /**
+    * {"name":"useOriginalRecipeForFilters","type":"Boolean","access":1}
+    */
+  readonly useOriginalRecipeForFilters: boolean;
 }
 
 /**
   * dev.latvian.kubejs.server.TagEventJS
-  * Events this will trigger on: item.tags, block.tags, fluid.tags, entity_type.tags, <custom_type>.tags
+  * Events: item.tags, block.tags, fluid.tags, entity_type.tags, <custom_type>.tags
   */
 interface TagEventJS extends EventJS {
+  /**
+    * {"name":"type","type":"String"}
+    */
+  readonly type: string;
 
   /**
     * @param tag ResourceLocation
@@ -1728,6 +2420,10 @@ interface TagEventJS extends EventJS {
   * dev.latvian.kubejs.stages.Stages
   */
 interface Stages {
+  /**
+    * {"name":"all","type":{"name":"Collection","generics":["String"]}}
+    */
+  readonly all: Collection<String>;
 
   /**
     * @param stage String
@@ -1776,13 +2472,21 @@ interface Stages {
   /**
     * @param stages {"name":"stages","type":{"name":"Collection","generics":["String"]}}
     */
-  replace(stages: Collection): void;
+  replace(stages: Collection<String>): void;
 }
 
 /**
   * dev.latvian.kubejs.text.Text
   */
 interface Text {
+  /**
+    * {"name":"string","type":"String"}
+    */
+  readonly string: string;
+  /**
+    * {"name":"siblings","type":{"name":"List","generics":["Text"]}}
+    */
+  readonly siblings: Text[];
 
   /**
     */
@@ -1952,6 +2656,26 @@ interface Text {
   * dev.latvian.kubejs.util.color.Color
   */
 interface Color {
+  /**
+    * {"name":"argbKJS","type":"Integer"}
+    */
+  readonly argbKJS: number;
+  /**
+    * {"name":"rgbKJS","type":"Integer"}
+    */
+  readonly rgbKJS: number;
+  /**
+    * {"name":"fireworkColorKJS","type":"Integer"}
+    */
+  readonly fireworkColorKJS: number;
+  /**
+    * {"name":"hexKJS","type":"String"}
+    */
+  readonly hexKJS: string;
+  /**
+    * {"name":"serializeKJS","type":"String"}
+    */
+  readonly serializeKJS: string;
 
   /**
     */
@@ -1962,6 +2686,30 @@ interface Color {
   * dev.latvian.kubejs.util.ConsoleJS
   */
 interface ConsoleJS {
+  /**
+    * {"name":"logger","type":{"name":"Logger","type":2}}
+    */
+  readonly logger: Logger;
+  /**
+    * {"name":"muted","type":"Boolean","access":1}
+    */
+  readonly muted: boolean;
+  /**
+    * {"name":"debugEnabled","type":"Boolean","access":1}
+    */
+  readonly debugEnabled: boolean;
+  /**
+    * {"name":"writeToFile","type":"Boolean","access":1}
+    */
+  readonly writeToFile: boolean;
+  /**
+    * {"name":"lineNumber","type":"Boolean","access":2}
+    */
+  readonly lineNumber: boolean;
+  /**
+    * {"name":"scriptLine","type":"Integer"}
+    */
+  readonly scriptLine: number;
 
   /**
     * @param message Object
@@ -1972,7 +2720,7 @@ interface ConsoleJS {
     * @param message Object
     * @param args {"name":"args","type":{"name":"VarArray","generics":["Object"]}}
     */
-  infof(message: Object, args: VarArray): void;
+  infof(message: Object, args: Array<Object>): void;
 
   /**
     * @param message Object
@@ -1994,7 +2742,7 @@ interface ConsoleJS {
     * @param message String
     * @param args {"name":"args","type":{"name":"VarArray","generics":["Object"]}}
     */
-  warnf(message: string, args: VarArray): void;
+  warnf(message: string, args: Array<Object>): void;
 
   /**
     * @param message Object
@@ -2011,7 +2759,7 @@ interface ConsoleJS {
     * @param message String
     * @param args {"name":"args","type":{"name":"VarArray","generics":["Object"]}}
     */
-  errorf(message: string, args: VarArray): void;
+  errorf(message: string, args: Array<Object>): void;
 
   /**
     */
@@ -2026,7 +2774,7 @@ interface ConsoleJS {
     * @param message String
     * @param args {"name":"args","type":{"name":"VarArray","generics":["Object"]}}
     */
-  debugf(message: string, args: VarArray): void;
+  debugf(message: string, args: Array<Object>): void;
 
   /**
     */
@@ -2067,33 +2815,145 @@ interface ConsoleJS {
   * dev.latvian.kubejs.util.MessageSender
   */
 interface MessageSender {
+  /**
+    * {"name":"name","type":"Text"}
+    */
+  readonly name: string;
+  /**
+    * {"name":"displayName","type":"Text"}
+    */
+  readonly displayName: string;
+  /**
+    * {"name":"statusMessage","type":"Text","access":2}
+    */
+  readonly statusMessage: string;
 
   /**
     * @param message Text
     */
-  tell(message: Text): void;
+  tell(message: string): void;
 
   /**
     * @param command String
     */
-  runCommand(command: string): Integer;
+  runCommand(command: string): number;
 
   /**
     * @param command String
     */
-  runCommandSilent(command: string): Integer;
+  runCommandSilent(command: string): number;
 }
 
 /**
   * dev.latvian.kubejs.world.BlockContainerJS
   */
 interface BlockContainerJS {
+  /**
+    * {"name":"world","type":"WorldJS"}
+    */
+  readonly world: WorldJS;
+  /**
+    * {"name":"pos","type":"BlockPos"}
+    */
+  readonly pos: BlockPos;
+  /**
+    * {"name":"dimension","type":"String"}
+    */
+  readonly dimension: string;
+  /**
+    * {"name":"x","type":"Integer"}
+    */
+  readonly x: number;
+  /**
+    * {"name":"y","type":"Integer"}
+    */
+  readonly y: number;
+  /**
+    * {"name":"z","type":"Integer"}
+    */
+  readonly z: number;
+  /**
+    * {"name":"down","type":"BlockContainerJS"}
+    */
+  readonly down: BlockContainerJS;
+  /**
+    * {"name":"up","type":"BlockContainerJS"}
+    */
+  readonly up: BlockContainerJS;
+  /**
+    * {"name":"north","type":"BlockContainerJS"}
+    */
+  readonly north: BlockContainerJS;
+  /**
+    * {"name":"south","type":"BlockContainerJS"}
+    */
+  readonly south: BlockContainerJS;
+  /**
+    * {"name":"west","type":"BlockContainerJS"}
+    */
+  readonly west: BlockContainerJS;
+  /**
+    * {"name":"east","type":"BlockContainerJS"}
+    */
+  readonly east: BlockContainerJS;
+  /**
+    * {"name":"blockState","type":"BlockState"}
+    */
+  readonly blockState: BlockState;
+  /**
+    * {"name":"id","type":"String"}
+    */
+  readonly id: string;
+  /**
+    * {"name":"tags","type":{"name":"Collection","generics":["ResourceLocation"]}}
+    */
+  readonly tags: Collection<ResourceLocation>;
+  /**
+    * {"name":"properties","type":{"name":"Map","generics":["String","String"]}}
+    */
+  readonly properties: Map<String>;
+  /**
+    * {"name":"entity","type":{"name":"BlockEntity","type":2}}
+    */
+  readonly entity: BlockEntity;
+  /**
+    * {"name":"entityId","type":"String"}
+    */
+  readonly entityId: string;
+  /**
+    * {"name":"entityData","type":{"name":"Map","generics":["String","Object"]}}
+    */
+  readonly entityData: Map<String>;
+  /**
+    * {"name":"light","type":"Integer"}
+    */
+  readonly light: number;
+  /**
+    * {"name":"canSeeSky","type":"Boolean"}
+    */
+  readonly canSeeSky: boolean;
+  /**
+    * {"name":"material","type":{"name":"MaterialJS","type":2}}
+    */
+  readonly material: MaterialJS;
+  /**
+    * {"name":"item","type":"ItemStackJS"}
+    */
+  readonly item: ItemStackJS;
+  /**
+    * {"name":"playersInRadius","type":"EntityArrayList"}
+    */
+  readonly playersInRadius: EntityArrayList;
+  /**
+    * {"name":"biomeId","type":"String"}
+    */
+  readonly biomeId: string;
 
   /**
     * @param direction Direction
     * @param blocks Integer
     */
-  offset(direction: Direction, blocks: Integer): void;
+  offset(direction: Direction, blocks: number): void;
 
   /**
     * @param direction Direction
@@ -2105,13 +2965,13 @@ interface BlockContainerJS {
     * @param y Integer
     * @param z Integer
     */
-  offset(x: Integer, y: Integer, z: Integer): void;
+  offset(x: number, y: number, z: number): void;
 
   /**
     * @param state BlockState
     * @param flags Integer
     */
-  setBlockState(state: BlockState, flags: Integer): void;
+  setBlockState(state: BlockState, flags: number): void;
 
   /**
     * @param tag ResourceLocation
@@ -2123,13 +2983,13 @@ interface BlockContainerJS {
     * @param properties {"name":"properties","type":{"name":"Map","generics":["String","String"]}}
     * @param flags Integer
     */
-  set(id: string, properties: Map, flags: Integer): void;
+  set(id: string, properties: Map<String>, flags: number): void;
 
   /**
     * @param id ResourceLocation
     * @param properties {"name":"properties","type":{"name":"Map","generics":["String","String"]}}
     */
-  set(id: string, properties: Map): void;
+  set(id: string, properties: Map<String>): void;
 
   /**
     * @param id ResourceLocation
@@ -2176,20 +3036,52 @@ interface BlockContainerJS {
   * dev.latvian.kubejs.world.ExplosionEventJS
   */
 interface ExplosionEventJS extends WorldEventJS {
+  /**
+    * {"name":"position","type":"Vec3"}
+    */
+  readonly position: Vec3;
+  /**
+    * {"name":"x","type":"Double"}
+    */
+  readonly x: number;
+  /**
+    * {"name":"y","type":"Double"}
+    */
+  readonly y: number;
+  /**
+    * {"name":"z","type":"Double"}
+    */
+  readonly z: number;
+  /**
+    * {"name":"block","type":"BlockContainerJS"}
+    */
+  readonly block: BlockContainerJS;
+  /**
+    * {"name":"exploder","type":"LivingEntityJS","nullable":true}
+    */
+  readonly exploder?: LivingEntityJS;
 }
 
 /**
   * dev.latvian.kubejs.world.SimpleWorldEventJS
-  * Events this will trigger on: world.load, world.unload, world.tick
+  * Events: world.load, world.unload, world.tick
   */
 interface SimpleWorldEventJS extends WorldEventJS {
 }
 
 /**
   * dev.latvian.kubejs.world.WorldEventJS$Post
-  * Events this will trigger on: world.explosion.post
+  * Events: world.explosion.post
   */
 interface WorldEventJS$Post extends ExplosionEventJS {
+  /**
+    * {"name":"affectedEntities","type":"EntityArrayList"}
+    */
+  readonly affectedEntities: EntityArrayList;
+  /**
+    * {"name":"affectedBlocks","type":{"name":"List","generics":["BlockContainerJS"]}}
+    */
+  readonly affectedBlocks: BlockContainerJS[];
 
   /**
     * @param entity EntityJS
@@ -2216,9 +3108,13 @@ interface WorldEventJS$Post extends ExplosionEventJS {
 
 /**
   * dev.latvian.kubejs.world.WorldEventJS$Pre
-  * Events this will trigger on: world.explosion.pre
+  * Events: world.explosion.pre
   */
 interface WorldEventJS$Pre extends ExplosionEventJS {
+  /**
+    * {"name":"size","type":"Float","access":1}
+    */
+  readonly size: number;
 
   /**
     */
@@ -2229,19 +3125,98 @@ interface WorldEventJS$Pre extends ExplosionEventJS {
   * dev.latvian.kubejs.world.WorldEventJS
   */
 interface WorldEventJS extends EventJS {
+  /**
+    * {"name":"world","type":"WorldJS"}
+    */
+  readonly world: WorldJS;
+  /**
+    * {"name":"server","type":"ServerJS","nullable":true}
+    */
+  readonly server?: ServerJS;
 }
 
 /**
   * dev.latvian.kubejs.world.WorldJS
   */
 interface WorldJS {
+  /**
+    * {"name":"EntityJS","type":{"name":"nullable","type":2},"access":1,"deprecated":true}
+    * @depricated
+    */
+  readonly EntityJS: null;
+  /**
+    * {"name":"LivingEntityJS","type":{"name":"nullable","type":2},"access":1,"deprecated":true}
+    * @depricated
+    */
+  readonly LivingEntityJS: null;
+  /**
+    * {"name":"PlayerJS","type":{"name":"nullable","type":2},"access":1,"deprecated":true}
+    * @depricated
+    */
+  readonly PlayerJS: null;
+  /**
+    * {"name":"side","type":"ScriptType"}
+    */
+  readonly side: ScriptType;
+  /**
+    * {"name":"data","type":{"name":"AttachedData","type":2}}
+    */
+  readonly data: AttachedData;
+  /**
+    * {"name":"gameRules","type":"GameRulesJS"}
+    */
+  readonly gameRules: GameRulesJS;
+  /**
+    * {"name":"server","type":"ServerJS","nullable":true}
+    */
+  readonly server?: ServerJS;
+  /**
+    * {"name":"time","type":"Long"}
+    */
+  readonly time: number;
+  /**
+    * {"name":"localTime","type":"Long"}
+    */
+  readonly localTime: number;
+  /**
+    * {"name":"dimension","type":"String"}
+    */
+  readonly dimension: string;
+  /**
+    * {"name":"overworld","type":"Boolean"}
+    */
+  readonly overworld: boolean;
+  /**
+    * {"name":"daytime","type":"Boolean"}
+    */
+  readonly daytime: boolean;
+  /**
+    * {"name":"raining","type":"Boolean"}
+    */
+  readonly raining: boolean;
+  /**
+    * {"name":"thundering","type":"Boolean"}
+    */
+  readonly thundering: boolean;
+  /**
+    * {"name":"rainStrength","type":"Float","access":2}
+    */
+  readonly rainStrength: number;
+  /**
+    * {"name":"players","type":"EntityArrayList"}
+    */
+  readonly players: EntityArrayList;
+  /**
+    * {"name":"entities","type":"EntityArrayList"}
+    */
+  readonly entities: EntityArrayList;
 
   /**
     * @param x Integer
     * @param y Integer
     * @param z Integer
     */
-  getBlock(x: Integer, y: Integer, z: Integer): BlockContainerJS;
+  getBlock(x: number, y: number, z: number): BlockContainerJS;
 
   /**
     * @param pos BlockPos
@@ -2263,7 +3238,7 @@ interface WorldJS {
     * @depricated
     * @param entities {"name":"entities","type":{"name":"Collection","generics":[{"name":"Entity","type":2}]}}
     */
-  createEntityList(entities: Collection): EntityArrayList;
+  createEntityList(entities: Entity): EntityArrayList;
 
   /**
     * @param x Double

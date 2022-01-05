@@ -47,15 +47,27 @@ async function buildDefinition() {
 		GENERATED_FILE.write(`/**\n`);
 		GENERATED_FILE.write(`  * ${definition.name}\n`);
 		if (definition.events) {
-			GENERATED_FILE.write(`  * Events this will trigger on: ${definition.events.join(", ")}\n`);
+			GENERATED_FILE.write(`  * Events: ${definition.events.join(", ")}\n`);
 		}
 		GENERATED_FILE.write(`  */\n`);
 
-		const extend = !definition.extends ? "" : " extends " + (Array.isArray(definition.extends) ? definition.extends : [definition.extends]).join(", ");
+		const extend = !definition.extends ? "" : " extends " + (definition.extends.name ? normalizeType(definition.extends.name) : (Array.isArray(definition.extends) ? definition.extends : [definition.extends]).join(", "));
 
 		// ACTUAL CLASS
 		GENERATED_FILE.write(`interface ${definition.unique}${extend} {\n`)
 		
+		if (definition.fields) {
+			for (const key in definition.fields) {
+				const value = definition.fields[key];
+
+				GENERATED_FILE.write(`${SPACES}/**\n`);
+				GENERATED_FILE.write(`${SPACES}  * ${JSON.stringify(value)}\n`);
+				(value.deprecated ? GENERATED_FILE.write(`${SPACES}  * @depricated\n`) : undefined);
+				GENERATED_FILE.write(`${SPACES}  */\n`);
+				GENERATED_FILE.write(`${SPACES}readonly ${value.name}${value.nullable ? "?" : ""}: ${normalizeType(value.type)};\n`)
+			}
+		}
+
 		if (definition.methods) {
 			for (const key in definition.methods) {
 				const value = definition.methods[key];
@@ -64,33 +76,51 @@ async function buildDefinition() {
 				(value.deprecated ? GENERATED_FILE.write(`${SPACES}  * @depricated\n`) : undefined);
 				GENERATED_FILE.write(generateParamsDesc(value.params))
 				GENERATED_FILE.write(`${SPACES}  */\n`);
-				GENERATED_FILE.write(`${SPACES}${value.name}(${generateParams(value.params)}): ${normalizeType((value.type && value.type.name) ? value.type.name : value.type)};\n`)
-
-				console.log(value);
+				GENERATED_FILE.write(`${SPACES}${value.name}(${generateParams(value.params)}): ${normalizeType(value.type)};\n`)
 			}
 		}
 
 		GENERATED_FILE.write(`}\n\n`)
 	}
 
-	const generateEventDefinitions = (definition) => {
-		if (!definition.events){
-			return; //lulw no
+	const generateInterfaceMap = (namespaceJSON, namespace) => {
+		let event_map = {};
+		for (const key in namespaceJSON) {
+			const value = namespaceJSON[key];
+			if (!value.events){
+				continue; //lulw no
+			}
+			event_map[value.events] = value.unique;
 		}
-		
+
+		GENERATED_FILE.write(`/**\n`);
+		GENERATED_FILE.write(`  * Event type -> Event mapping for ${namespace}\n`);
+		GENERATED_FILE.write(`  */\n`);
+		GENERATED_FILE.write(`interface ${namespace} {\n`)
+		// event_map
+		map((key, value) => {
+			if (value.includes(",")) {
+				value.split(",").map(v => {
+					GENERATED_FILE.write(`${SPACES}"${v}": ${key};\n`);
+				})
+				return;
+			}
+			GENERATED_FILE.write(`${SPACES}"${value}": ${key};\n`);
+		})(event_map);
+		console.log(event_map)
+
+		GENERATED_FILE.write(`}\n\n`)
+
 		// DESC 
 		GENERATED_FILE.write(`/**\n`);
 		GENERATED_FILE.write(`  * KubeJS event listener.\n`);
 		GENERATED_FILE.write(`  * Triggers during an event.\n`);
 		GENERATED_FILE.write(`  * \n`);
-		GENERATED_FILE.write(`  * @param id The event ID\n`);
+		GENERATED_FILE.write(`  * @param type {string} The event ID\n`);
 		GENERATED_FILE.write(`  * @param event\n`);
 		GENERATED_FILE.write(`  */\n`);
-
 		// FUNC
-		let itsastring = [];
-		definition.events.forEach(v => itsastring.push(`"${v}"`))
-		GENERATED_FILE.write(`declare function onEvent(id: ${itsastring.join(" | ")}, event: (event: ${definition.unique}) => void): void;\n\n`);
+		GENERATED_FILE.write(`declare function onEvent<T extends keyof ${namespace}, E extends ${namespace}[T]>(type: T, handle: (e: E) => void): void;\n\n`);
 	}
 
 	GENERATED_FILE.write('/// <reference no-default-lib="true"/>\n');
@@ -101,25 +131,8 @@ async function buildDefinition() {
 	GENERATED_FILE.write('/////////////////////////////\n\n\n');
 
 	const KUBEJS_NS = findNameSpace("kubejs", KUBEJS_DOCS_JSON)["classes"];
-	//const KUBEJS_MEKA_NS = findNameSpace("kubejs_mekanism", KUBEJS_DOCS_JSON)["classes"];
-	//const KUBEJS_MC_NS = findNameSpace("minecraft", KUBEJS_DOCS_JSON)["classes"];
 
-	for (const key in KUBEJS_NS) {
-		const value = KUBEJS_NS[key];
-		generateEventDefinitions(value)
-	}
-	// GENERATED_FILE.write('\n\n/////////////////////////////\n\n');
-
-	// for (const key in KUBEJS_MEKA_NS) {
-	// 	const value = KUBEJS_MEKA_NS[key];
-	// 	generateEventDefinitions(value)
-	// }
-	// GENERATED_FILE.write('\n\n/////////////////////////////\n\n');
-
-	// for (const key in KUBEJS_MC_NS) {
-	// 	const value = KUBEJS_MC_NS[key];
-	// 	generateEventDefinitions(value)
-	// }
+	generateInterfaceMap(KUBEJS_NS, "KubeJS")
 
 	GENERATED_FILE.write('\n\n/////////////////////////////\n');
 	GENERATED_FILE.write('/// KubeJS APIs - Types\n');
@@ -138,17 +151,43 @@ async function buildDefinition() {
 
 const NORMALIZED_TYPE = {
 	Void: "void",
+	nullable: "null",
 	Boolean: "boolean",
 	String: "string",
+	Text: "string",
 	Long: "number",
 	Double: "number",
 	Float: "number",
-	ResourceLocation: "string"
+	Integer: "number",
+	ResourceLocation: "string",
+	VarArray: "Array", // what the fuck is a va,
+	ArrayList: "Array",
 }
 function normalizeType(type) {
 	if (!type) {
 		return "void";
 	}
+	if (type.name) {
+		// special function
+		const r = (type.name in NORMALIZED_TYPE) ? NORMALIZED_TYPE[type.name] : type.name;
+		if (type.generics) {
+			// its a collection or map
+			const generics = type.generics[0];
+			// aeugh
+			if (generics.name) {
+				return normalizeType(generics.name);
+			}
+			if (r === "Function" || r === "Consumer") {
+				return `(input: ${generics}) => ${(type.generics[1] && !r === "Consumer") ? type.generics[1] : "void"}`;
+			}
+			if (r === "List") {
+				return `${generics}[]`;
+			}
+			return `${r}<${generics}>`;
+		}
+		return r;
+	}
+
 	return (type in NORMALIZED_TYPE) ? NORMALIZED_TYPE[type] : type;
 }
 
@@ -156,7 +195,7 @@ function generateParams(params) {
 	let paramOut = "";
 	for (const key in params) {
 		const value = params[key];
-		paramOut += `${value.name}${value.nullable ? "?" : ""}: ${normalizeType(value.type.name ? value.type.name : value.type)}${params[Number(key)+1] ? ", " : ""}`;
+		paramOut += `${value.name}${value.nullable ? "?" : ""}: ${normalizeType(value.type)}${params[Number(key)+1] ? ", " : ""}`;
 	}
 	return paramOut;
 }
@@ -184,5 +223,39 @@ function findNameSpace(namespace, json) {
 		}
 	}
 }
+
+/**
+ * Creates an array of values by running each element in collection
+ * thru an iteratee function. The iteratee is invoked with three
+ * arguments: (value, index|key, collection).
+ *
+ * If collection is 'null' or 'undefined', it will be returned "as is"
+ * without emitting any errors (which can be useful in some cases).
+ *
+ * @returns {any[]}
+ */
+const map = iterateeFn => collection => {
+	if (collection === null || collection === undefined) {
+	  return collection;
+	}
+	if (Array.isArray(collection)) {
+	  const result = [];
+	  for (let i = 0; i < collection.length; i++) {
+		result.push(iterateeFn(collection[i], i, collection));
+	  }
+	  return result;
+	}
+	if (typeof collection === 'object') {
+	  const hasOwnProperty = Object.prototype.hasOwnProperty;
+	  const result = [];
+	  for (let i in collection) {
+		if (hasOwnProperty.call(collection, i)) {
+		  result.push(iterateeFn(collection[i], i, collection));
+		}
+	  }
+	  return result;
+	}
+	throw new Error(`map() can't iterate on type ${typeof collection}`);
+  };
 
 buildDefinition();
