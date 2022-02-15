@@ -2,6 +2,10 @@
 
 KubeJS d.ts documentations for VScode linting
 
+## IMPORTANT
+Typedefs aren't final! Automatic ones doesnt contain all as the java parser isn't done!
+JSON data from the parser is sourced from <https://kubejs.com/wiki/data.json>
+
 ## Basic usage
 
 1. Download the repository
